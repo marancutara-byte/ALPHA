@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #08080d;
+    color: white;
+    height: 100vh;
+}
+
+#app {
+    width: 100%;
+    height: 100vh;
+}
+
+button,
+input {
+    font-family: inherit;
+}
