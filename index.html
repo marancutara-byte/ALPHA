@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ALPHA - Inteligencia Artificial</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0a0a0f;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .alpha {
+            width: 95%;
+            max-width: 1000px;
+            height: 90vh;
+            background: #11111a;
+            border: 1px solid #29293a;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 40px rgba(80, 80, 255, 0.15);
+        }
+
+        header {
+            padding: 20px;
+            border-bottom: 1px solid #29293a;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5b5cff, #9b59ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        header h1 {
+            font-size: 22px;
+        }
+
+        header p {
+            color: #888899;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        #chat {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .message {
+            max-width: 75%;
+            padding: 14px 17px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            line-height: 1.5;
+        }
+
+        .alpha-message {
+            background: #1b1b27;
+            margin-right: auto;
+        }
+
+        .user-message {
+            background: #5153d9;
+            margin-left: auto;
+        }
+
+        .input-area {
+            padding: 15px;
+            border-top: 1px solid #29293a;
+            display: flex;
+            gap: 10px;
+        }
+
+        #messageInput {
+            flex: 1;
+            background: #1b1b27;
+            color: white;
+            border: 1px solid #303044;
+            border-radius: 12px;
+            padding: 14px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        #sendButton {
+            background: #5b5cff;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 0 22px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #sendButton:hover {
+            background: #6d6fff;
+        }
+
+        @media (max-width: 600px) {
+            .alpha {
+                width: 100%;
+                height: 100vh;
+                border-radius: 0;
+            }
+
+            .message {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="alpha">
+
+    <header>
+        <div class="logo">A</div>
+
+        <div>
+            <h1>ALPHA</h1>
+            <p>Inteligencia Artificial</p>
+        </div>
+    </header>
+
+    <main id="chat">
+
+        <div class="message alpha-message">
+            Hola. Soy <strong>ALPHA</strong>.<br>
+            Mi sistema de inteligencia artificial todavía está en construcción.
+        </div>
+
+    </main>
+
+    <div class="input-area">
+
+        <input
+            id="messageInput"
+            type="text"
+            placeholder="Escribe un mensaje..."
+        >
+
+        <button id="sendButton">
+            Enviar
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const input = document.getElementById("messageInput");
+const button = document.getElementById("sendButton");
+const chat = document.getElementById("chat");
+
+function addMessage(text, type) {
+
+    const message = document.createElement("div");
+
+    message.classList.add("message");
+
+    if (type === "user") {
+        message.classList.add("user-message");
+    } else {
+        message.classList.add("alpha-message");
+    }
+
+    message.innerHTML = text;
+
+    chat.appendChild(message);
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function sendMessage() {
+
+    const text = input.value.trim();
+
+    if (text === "") {
+        return;
+    }
+
+    addMessage(text, "user");
+
+    input.value = "";
+
+    setTimeout(() => {
+
+        addMessage(
+            "Recibí tu mensaje. Mi cerebro de IA todavía no está conectado, pero pronto lo estará.",
+            "alpha"
+        );
+
+    }, 500);
+}
+
+button.addEventListener("click", sendMessage);
+
+input.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
