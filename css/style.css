@@ -14,9 +14,92 @@ body {
 #app {
     width: 100%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-button,
-input {
-    font-family: inherit;
+header {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    border-bottom: 1px solid #292936;
+    background: #101017;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+header p {
+    color: #888894;
+    font-size: 13px;
+}
+
+#chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 30px;
+}
+
+.message {
+    max-width: 750px;
+    padding: 15px 18px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    line-height: 1.5;
+}
+
+.alpha-message {
+    background: #181820;
+    margin-right: auto;
+}
+
+.user-message {
+    background: #4e51d9;
+    margin-left: auto;
+}
+
+footer {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: #101017;
+    border-top: 1px solid #292936;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #30303d;
+    background: #181820;
+    color: white;
+    outline: none;
+}
+
+#sendButton {
+    padding: 0 25px;
+    border: none;
+    border-radius: 12px;
+    background: #5558e6;
+    color: white;
+    cursor: pointer;
+}
+
+#sendButton:hover {
+    background: #6669f5;
+}
+
+@media (max-width: 600px) {
+
+    #chat {
+        padding: 15px;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+
 }
